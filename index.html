@@ -8,173 +8,274 @@
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <img src="images/Безымянный-2024-11-27-0938.png" alt="logo">
-        <h1>Веторда<br>ветеринарная клиника </h1>
+        <h1>ВетОрда<br>ветеринарная клиника </h1>
         <nav>
-            <ul>
+            <ul class="header">
                 <li><a href="#">Главная</a></li>
                 <li><a href="#">Услуги</a></li>
                 <li><a href="#">Отзывы</a></li>
                 <li><a href="#">Контакты</a></li>
             </ul>
         </nav>
-        <strong>88005553535</strong>
-        <p>Ежедневно с 9:00 до 21:00</p>
-        <button>Запись на прием</button>
+        <div class="header_phone">
+            <strong>88005553535</strong>
+            <span>Ежедневно с 9:00 до 21:00</span>
+            <button class="header_button">Запись на прием</button>
+        </div>
     </header>
-    <main class=":main">
-        <p>Ветеринарная клиника<br>"Веторда"</p>
-        <img src="images/Псина.jpg" alt="secondlogo" width="75" height="75">
-        <p>Одна из немногих ветеринарных клиник,<br>которых не существует!</p>
-        <p>Первичный осмотр - 500 рублей<br>Остались вопросы? - Мы перезвоним!</p>
-        <form action="/submit" method="post">
-            <input type="text" name="username" placeholder="Ваш телефон">
-            <input type="submit" value="Перезвоните мне">
-        </form>
-        <section>
-            <img src="images/Две псины.jpg" alt="Превьюшка" width="600" height="500">
-            <div>
-                <h2>Популярные услуги</h2>
-                <h3> Мы предлагаем множество разных услуг!</h3>
+    <main class="main">
+        <section class="banner">
+            <div class="banner_content">
+                <span class="banner_title">
+                    Ветеринарная клиника "ВетОрда"
+                </span>
+                <span class="banner_subtitle">Одна из немногих ветеринарных клиник,<br>которых не существует!</span>
+                <div class="banner_img">
+                    <img src="images/banner_img.jpg" alt="banner_img" width="600" height="500">
+                </div>
+                <form class="banner_form">
+                    <span class="banner_form_title">
+                        "Первичный осмотр - 500 рублей"
+                        <br>
+                        "Остались вопросы? - Мы перезвоним!"
+                    </span>
+                    <input type="tel" name="phone" class="input banner_input" placeholder="Ваш телефон" required>
+                    <input type="submit" value="Перезвоните мне" class="submit bth banner_submit">
+                </form>
             </div>
-            <ul>
-                <li>
-                    <img src="images/kastr.jpg" alt="Кастрация" width="150" height="150">
-                    <a href="#" target="_blank">
-                        <h3>Кастрация</h3>
-                    </a>
-                    <p>От 1000 рублей</p>
-                </li>
-                <li>
-                    <img src="images/ster.png" alt="Стерилизация" width="150" height="150">
-                    <a href="#" target="_blank">
-                        <h3>Стерилизация</h3>
-                    </a>
-                    <p>От 1200 рублей</p>
-
-                </li>
-                <li>
-                    <img src="images/UZI.png" alt="УЗИ" width="150" height="150">
-                    <a href="#" target="_blank">
-                        <h3>УЗИ</h3>
-                    </a>
-                    <p>От 250 рублей</p>
-                </li>
-                <li>
-                    <img src="images/vac.jpg" alt="Вакцинация" width="150" height="150">
-                    <a href="#" target="_blank">
-                        <h3>Вакцинация</h3>
-                    </a>
-                    <p>От 500 рублей</p>
-                </li>
-                <li>
-                    <img src="images/striz.png" alt="Стрижки" width="150" height="150">
-                    <a href="#" target="_blank">
-                        <h3>Стрижки</h3>
-                    </a>
-                    <p>40 услуг от 200 рублей</p>
-                </li>
-                <li>
-                    <img src="images/priut.jpg" alt="Приют" width="150" height="150">
-                    <a href="#" target="_blank">
-                        <h3>Приют</h3>
-                    </a>
-                    <p>5 улуг от 1270 рублей</p>
-                </li>
-                <li>
-                    <img src="images/Chip.png" alt="Чипирование" width="150" height="150">
-                    <a href="#" target="_blank">
-                        <h3>Чипирование</h3>
-                    </a>
-                    <p>От 1500 рублей</p>
-                </li>
-                <li>
-                    <img src="images/usp.png" alt="Усыпление" width="150" height="150">
-                    <a href="#" target="_blank">
-                        <h3>Усыпление</h3>
-                    </a>
-                    <p>От 350 рублей</p>
-                </li>
-            </ul>
         </section>
-        <section>
-            <div>
-                <h2>Отзывы о нашей клинике</h2>
-                <h3>Реальные отзывы клиентов</h3>
-                <button>Все отзывы</button>
+        <section class="popular">
+            <div class="popular_wrapper">
+                <h2 class="popular_title">Популярные услуги</h2>
+                <span class="popular_subtitle"> Мы предлагаем множество разных услуг!</span>
+            </div>
+            <div class="popular_list">
                 <ul>
                     <li>
-                        <img src="images/А1.jpg" alt="Ава пользователя" width="50" height="50">
-                        <h3>Никита Трапович</h3>
-                        <p>Круто!</p>
+                        <a href="kastracija/html" class="popular_item1" target="_blank">
+                            <div class="popular_item_img">
+                                <img src="images/kastr.jpg" alt="Кастрация" width="150" height="150">
+                            </div>
+                            <div class="popular_item_text">
+                                <strong>Кастрация</strong>
+                                <span>От 1000 рублей</span>
+                            </div>
+                        </a>
                     </li>
                     <li>
-                        <img src="images/А2.jpg" alt="Ава пользователя" width="50" height="50">
-                        <h3>Артур Пирожков</h3>
-                        <p>Великолепно!</p>
+                        <a href="sterelizacija/html" class="popular_item2" target="_blank">
+                            <div class="popular_item_img">
+                                <img src="images/ster.png" alt="Стерилизация" width="150" height="150">
+                            </div>
+                            <div class="popular_item_text">
+                                <strong>Стерилизация</strong>
+                                <span>От 1500 рублей</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="UZI/html" class="popular_item3" target="_blank">
+                            <div class="popular_item_img">
+                                <img src="images/UZI.png" alt="Кастрация" width="150" height="150">
+                            </div>
+                            <div class="popular_item_text">
+                                <strong>УЗИ</strong>
+                                <span>От 250 рублей</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="vaccinacija/html" class="popular_item4" target="_blank">
+                            <div class="popular_item_img">
+                                <img src="images/vac.jpg." alt="Вакцинация" width="150" height="150">
+                            </div>
+                            <div class="popular_item_text">
+                                <strong>Вакцинация</strong>
+                                <span>От 500 рублей</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="strizki/html" class="popular_item5" target="_blank">
+                            <div class="popular_item_img">
+                                <img src="images/striz.png." alt="Стрижки" width="150" height="150">
+                            </div>
+                            <div class="popular_item_text">
+                                <strong>Стрижки</strong>
+                                <span>40 услуг от 250 рублей</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="priut/html" class="popular_item6" target="_blank">
+                            <div class="popular_item_img">
+                                <img src="images/priut.jpg." alt="Приют" width="150" height="150">
+                            </div>
+                            <div class="popular_item_text">
+                                <strong>Приют</strong>
+                                <span>5 услуг от 1270 рублей</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="chipirovanije/html" class="popular_item7" target="_blank">
+                            <div class="popular_item_img">
+                                <img src="images/Chip.png." alt="Чипирование" width="150" height="150">
+                            </div>
+                            <div class="popular_item_text">
+                                <strong>Чипирование</strong>
+                                <span>От 700 рублей</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="usiplenije/html" class="popular_item8" target="_blank">
+                            <div class="popular_item_img">
+                                <img src="images/usp.png." alt="Усыпление" width="150" height="150">
+                            </div>
+                            <div class="popular_item_text">
+                                <strong>Усыплнение</strong>
+                                <span>От 250 рублей</span>
+                            </div>
+                        </a>
                     </li>
                 </ul>
-
             </div>
         </section>
-        <section>
-            <div>
-                <p>Наши квалифицированные врачи</p>
-                <h3>25 ветеринарных врачей</h3>
-                <button>Вызвать врача</button>
-                <ul>
-                    <li>
-                        <img src="images/гойда.jpg" alt="Врач1" width="200" height="200">
-                        <p>Быков Андрей Алексеевич</p>
-                        <h3>Заведующий<br>ветеринарным<br>отделением</h3>
-                    </li>
-                    <li>
-                        <img src="images/дедврач.jpg" alt="Врач2" width="200" height="200">
-                        <p>Кайзер Эмануил Андреевич</p>
-                        <h3>Ветеринарный<br>врач</h3>
-                    </li>
-                    <li>
-                        <img src="images/негрврач.jpg" alt="Врач3" width="200" height="200">
-                        <p>Бондаренко Михаил Петрович </p>
-                        <h3>Санитаро</h3>
-                    </li>
-                </ul>
+        <section class="reviews">
+            <div class="wrapper">
+                <div class="popular_wrapper">
+                    <div class="popular_wrapper_top">
+                        <div>
+                            <h2 class="popular_title">Отзывы о нашей клинике</h2>
+                            <span class="popular_subtitle">Реальные отзывы клиентов</span>
+                        </div>
+                        <a href="reviews" class="reviews_button">Все отзывы</a>
+                    </div>
+                    <div class="review_container">
+                        <div class="review_img">
+                            <img src="images/А1.jpg" alt="Ава пользователя" width="50" height="50">
+                        </div>
+                        <div>
+                            <strong class="review_name">Никита Трапович</strong>
+                            <span class="review_date">13 фев 2024</span>
+                        </div>
+                    </div>
+                    <p class="review_text">
+                        "Круто!"
+                    </p>
+                    <div class="review_container">
+                        <div class="review_img">
+                            <img src="images/А2.jpg" alt="Ава пользователя" width="50" height="50">
+                        </div>
+                        <div>
+                            <strong class="review_name">Артур Пирожков</strong>
+                            <span class="review_date">4 ноя 2025</span>
+                        </div>
+                    </div>
+                    <p class="review_text">
+                        "Классные врачи!"
+                    </p>
+                </div>
             </div>
         </section>
-        <section>
-            <img src="images/типоинтерактивнаякарта.jpg" alt="инерактивтипо" width="1000" height="700">
-            <p>Контактная<br>информация</p>
-            <h4>Ул. Пушкина, д.43</h4>
-            <p>8(800)555-35-35<br>8(917)701-76-66</p>
-            <h4>Ежедневно с 9.00 до 21.00</h4>
-            <h4>Для писем:</h4>
-            <p>usernamepochta1447@goida.ru</p>
-            <a href="#">Telegram</a>
-            <a href="#">VKontakte</a>
-            <a href="#">TikTok</a>
-
-
+        <section class="kvalif">
+            <div class="kvalif_wrapper">
+                <div class="kvalif_title">
+                    <div class="kvalif_title_text">
+                        <strong>Наши квалифицированные врачи</strong>
+                        <span>25 ветеринарных врачей</span>
+                    </div>
+                    <button class="kvalif_button">Вызвать врача</button>
+                </div>
+                <div class="kvalif_list">
+                    <div class="kvalif_container">
+                        <div class="kvalif_img">
+                            <img src="images/гойда.jpg" alt="Врач1" width="200" height="200">
+                            <div class="kvalif_text">
+                                <strong>Быков Андрей Алексеевич</strong>
+                                <span>Заведующий ветеринарным<br>отделением</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kvalif_container">
+                        <div class="kvalif_img">
+                            <img src="images/дедврач.jpg" alt="Врач2" width="200" height="200">
+                            <div class="kvalif_text">
+                                <strong>Кайзер Эмануил Андреевич</strong>
+                                <span>Ветеринарный<br>врач</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kvalif_container">
+                        <div class="kvalif_img">
+                            <img src="images/негрврач.jpg" alt="Врач3" width="200" height="200">
+                            <div class="kvalif_text">
+                                <strong>Ступапупа Петр Кловеворкс</strong>
+                                <span>Санитар</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="info">
+            <div class="info_wrapper">
+                <div class="info-map">
+                    <img src="images/типоинтерактивнаякарта.jpg" alt="инерактивтипо" width="1000" height="700">
+                </div>
+                <div class="info_block">
+                    <div class="info_content">
+                        <strong class="info_content_title">Контактная<br>информация</strong>
+                        <div class="info_content_item">
+                            <span class="info_block_title">ул.Пушкина, д.Колотушкина:</span>
+                            <strong>8(800)555-35-35<br>8(917)701-76-66</strong>
+                            <span class="info_block_title">Ежедневно с 9.00 до 21.00</span>
+                        </div>
+                        <div class="info_item">
+                            <span class="info_block_title">Для писем:</span>
+                            <a href="mailto:dimasherstnev135@gmail.com">dimasherstnev135@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
-    <footer>
-        <img src="images/Безымянный-2024-11-27-0938.png" alt="logo">
-        <h1>Веторда<br>ветеринарная клиника </h1>
-        <strong>8(800)555-35-35</strong>
-        <p>Ежедневно с 9.00 до 21.00</p>
-        <nav>
-            <ul>
-                <li><a href="#">Врачи</a></li>
-                <li><a href="#">Отзывы</a></li>
-                <li><a href="#">Контакты</a></li>
-            </ul>
-        </nav>
-        <p>Сайт создан Шерстневым Дмитрием и Толмачевым Кириллом группа ВТ-21</p>
-        <ul>
-            <li><a href="#">Правовая оговорка</a></li>
-            <li><a href="#">Пользовательское соглашение</a></li>
-            <li><a href="#">Политика конфидициальности</a></li>
-        </ul>
+    <footer class="footer">
+        <div class="wrapper">
+            <div class="footer_top">
+                <img src="images/Безымянный-2024-11-27-0938.png" alt="logo">
+                <div class="logo_text">
+                    <strong>ВетОрда</strong>
+                    <span>Ветеринарная клиника</span>
+                </div>
+                <div class="menu">
+                    <ul class="menu_list">
+                        <li class="menu_item">
+                            <a href="doctors">Врачи</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="reviews">Отзывы</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="contacts">Контакты</a>
+                        </li>
+                    </ul>
+                    <strong>8(800)555-35-35</strong>
+                    <span>Ежедневно с 9.00 до 21.00</span>
+                    <div class="footer_bottom">
+                        <p>Сайт создан Шерстневым Дмитрием и Толмачевым Кириллом группа ВТ-21</p>
+                        <ul>
+                            <li><a href="#">Правовая оговорка</a></li>
+                            <li><a href="#">Пользовательское соглашение</a></li>
+                            <li><a href="#">Политика конфидициальности</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 
