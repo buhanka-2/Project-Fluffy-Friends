@@ -1,0 +1,307 @@
+/* Общие стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+}
+
+/* Шапка */
+.header {
+    background-color: #E9ECEF;
+    padding: 15px 0;
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+}
+
+.header__menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav__link, .nav__link1 {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav__link1 {
+    color: #4CAF50; /* Зеленый для активной ссылки */
+}
+
+#nav__Button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* контент секции clinic */
+.clinic {
+    padding: 40px 0;
+    background-color: #fff;
+}
+
+.clinik__title {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    padding-left: 50px;
+}
+
+.clinic__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.clinic__content > img {
+    width: 45%;
+    max-width: 500px;
+    border-radius: 10px;
+    order: 2; 
+}
+
+.clinic-text {
+    width: 50%;
+    order: 1; 
+    text-align: left;
+}
+
+.clinic-text h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.clinic-text a {
+    display: block;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+.phone-input-group {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+}
+
+#telephone {
+    padding: 12px;
+    width: 60%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+#tel_Button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+#tel_Button:hover {
+    background-color: #3e8e41;
+}
+
+/* Стили для секции услуг */
+.services {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+}
+
+.services__title {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.services__content {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.services__content > p {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.services-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.service-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.service-price {
+    background-color: #4CAF50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+}
+
+.service-special {
+    font-size: 0.8em;
+    color: #e74c3c;
+    margin-left: 10px;
+}
+
+/* Врачи */
+.docktors {
+    text-align: center; 
+    padding: 40px 0;
+}
+
+.docktors__title {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 2em;
+    margin: 40px 0 20px;
+}
+
+.docktor__card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.docktor__card h3 {
+    color: #4CAF50;
+    margin-top: 0;
+}
+
+/* Подвал */
+.footer {
+    background-color: #E9ECEF;
+    padding: 30px 0;
+    text-align: center; 
+}
+
+.footer_inner {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px; 
+}
+
+.footer__menu {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 15px; 
+}
+
+footer img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.nav_link, .nav_link1 {
+    color: black;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+
+/* Форма */
+form {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form h1 {
+    text-align: center;
+    color: #4CAF50;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1em;
+}

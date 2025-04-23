@@ -10,7 +10,7 @@
     <header class = "header">
         <div class = "container">
             <div class = "header_inner">
-                <a><img src = "images\Screenshot 2025-04-21 163117.png" class = "header__logo" alt = "лого"></a>
+                <img src="images\logo.jpg" class="logo" alt="лого">
                 <nav class = "header__menu">
                     <a class = "nav__link1" href="#">ГЛАВНАЯ</a>         
                     <a class = "nav__link" href="#">УСЛУГИ</a>            
@@ -18,68 +18,94 @@
                     <a class = "nav__link" href="#">КОНТАКТЫ</a>
                     <button id="nav__Button">ЗАПИСЬ НА ПРИЕМ</button>
                 </nav>
-            </div>
-            <hr>    
+            </div>   
         </div>
     </header>
     
     <main class = "main">
-        <section class = "clinic">
-            <h1 class = "clinik__title">Ветеринарная клиника<br>
-                "Пушистые друзья"
-            </h1>
-            <div class = "clinic__content">
-                <a><img src = "images\Screenshot 2025-04-21 163227.png" alt = "собаки"></a><br>
-                <a><img src = "#"></a>
-                <a><br>Одна из немногих ветеринарных клиник,<br>
-                    которой не существует<br>
-                </a>
-                <a>Первичный осмотр - 500р<br>
-                    Остались вопросы? мы перезвоним <br>
-                </a>
-                <input type="text" id="telephone" name="telephone">
-                <button id="tel_Button">Перезвоните мне</button>
+        <section class="clinic">
+            <h1 class="clinik__title">Ветеринарная клиника<br>"Пушистые друзья"</h1>
+            <div class="clinic__content">
+                <div class="clinic-text">
+                    <h3>Одна из немногих ветеринарных клиник,<br>которой не существует</h3>
+                    <a>Первичный осмотр - 500 рублей.</a>
+                    <a>Остались вопросы - мы перезвоним!</a>
+                    <div class="phone-input-group">
+                        <input type="text" id="telephone" name="telephone" placeholder="Ваш телефон">
+                        <button id="tel_Button">Перезвоните мне</button>
+                    </div>
+                </div>
+                <img src="images/dogs.png" alt="собаки">
             </div>
-            
         </section>
-        <section class = "services">
-            <h1 class = "services__title">Популярные услуги</h1>
-            <div class = "services__content">
+        <section class="services">
+            <h1 class="services__title">Популярные услуги</h1>
+            <div class="services__content">
                 <p>Мы предлагаем множество разных услуг!</p>
-    
-                <hr>
-        
-                <h2>Кастрация</h2>
-                <p>От 1800 рублей</p>
                 
-                <h2>Стрелозащита</h2>
-                <p>От 1200 рублей</p>
-                
-                <h2>УЗИ</h2>
-                <p>От 250 рублей</p>
-                
-                <h2>Вакцинация</h2>
-                <p>От 300 рублей</p>
-
-                <h2>Стрижки</h2>
-                <p>40 услуг от 200 рублей</p>
-                
-                <h2>Приют</h2>
-                <p>5 услуг от 1270 рублей</p>
-                
-                <h2>Чипирование</h2>
-                <p>От 1500 рублей</p>
-                
-                <h2>Усыпление</h2>
-                <p>От 350 рублей</p>
-                <hr>
+                <ul class="services-list">
+                    <li class="service-item">
+                        <span class="service-name">Кастрация</span>
+                        <div>
+                            <span class="service-price">1000 рублей</span>
+                        </div>
+                    </li>
+                    
+                    <li class="service-item">
+                        <span class="service-name">Стерилизация</span>
+                        <div>
+                            <span class="service-price">1200 рублей</span>
+                        </div>
+                    </li>
+                    
+                    <li class="service-item">
+                        <span class="service-name">УЗИ</span>
+                        <div>
+                            <span class="service-price">250 рублей</span>
+                        </div>
+                    </li>
+                    
+                    <li class="service-item">
+                        <span class="service-name">Вакцинация</span>
+                        <div>
+                            <span class="service-price">300 рублей</span>
+                        </div>
+                    </li>
+                    
+                    <li class="service-item">
+                        <span class="service-name">Стрижки</span>
+                        <div>
+                            <span class="service-price">от 600 рублей</span>
+                        </div>
+                    </li>
+                    
+                    <li class="service-item">
+                        <span class="service-name">Приют</span>
+                        <div>
+                            <span class="service-price">от 1200 рублей</span>
+                        </div>
+                    </li>
+                    
+                    <li class="service-item">
+                        <span class="service-name">Чипирование</span>
+                        <div>
+                            <span class="service-price">150 рублей</span>
+                        </div>
+                    </li>
+                    
+                    <li class="service-item">
+                        <span class="service-name">Усыпление</span>
+                        <div>
+                            <span class="service-price">350 рублей</span>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            
         </section>
         <section class = "docktors">
             <h1 class = "docktors__title">Наши квалифицированные врачи</h1>
-    
-            <p>Х ветеринарных специалистов</p>
+            
+            <p>3 ветеринарных специалиста</p>
             
             <hr>
             
@@ -103,12 +129,16 @@
         </section>
     </main>
 
-    <footer>
-        <a><img src = "images\Screenshot 2025-04-21 163117.png" alt = "лого"></a>
-        <a class = "nav_link1" href="#">СПЕЦИАЛИСТЫ</a>         
-        <a class = "nav_link" href="#">УСЛУГИ</a>            
-        <a class = "nav_link" href="#">ОТЗЫВЫ</a>
-        <a class = "nav_link" href="#">КОНТАКТЫ</a>
+    <footer class = "footer">
+        <div class = "footer_inner">
+            <div class = "footer__menu">
+                <img src = "images\logo.jpg" alt = "лого">
+                <a class = "nav_link" href="#">СПЕЦИАЛИСТЫ</a>         
+                <a class = "nav_link" href="#">УСЛУГИ</a>            
+                <a class = "nav_link" href="#">ОТЗЫВЫ</a>
+                <a class = "nav_link" href="#">КОНТАКТЫ</a>
+            </div>
+        </div>
     </footer>
     <!--форма находится здесь потому что в дальнейшем она будет модальным окном-->
     <form>
@@ -119,5 +149,6 @@
         <input type="number" id="num_tel" name="num_tel">
         <button type="submit">Отправить</button>
     </form>
+    
 </body>
 </html>
