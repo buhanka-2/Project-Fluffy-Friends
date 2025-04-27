@@ -305,3 +305,522 @@ form button {
     width: 100%;
     font-size: 1em;
 }
+
+/* Общие стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+}
+
+/* Шапка */
+.header {
+    background-color: #E9ECEF;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.header.scrolled {
+    padding: 10px 0;
+    background-color: rgba(233, 236, 239, 0.95);
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.header__menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav__link, .nav__link1 {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav__link:hover, .nav__link1:hover {
+    color: #4CAF50;
+}
+
+.nav__link::after, .nav__link1::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+.nav__link:hover::after, .nav__link1:hover::after {
+    width: 100%;
+}
+
+.nav__link1 {
+    color: #4CAF50;
+}
+
+#nav__Button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#nav__Button:hover {
+    background-color: #3e8e41;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* контент секции clinic */
+.clinic {
+    padding: 40px 0;
+    background-color: #fff;
+}
+
+.clinik__title {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    padding-left: 50px;
+    animation: fadeIn 1s ease;
+}
+
+.clinic__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.clinic__content > img {
+    width: 45%;
+    max-width: 500px;
+    border-radius: 10px;
+    order: 2;
+    animation: slideInRight 1s ease;
+}
+
+.clinic-text {
+    width: 50%;
+    order: 1;
+    text-align: left;
+    animation: fadeInLeft 1s ease;
+}
+
+.clinic-text h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.clinic-text a {
+    display: block;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.clinic-text a:hover {
+    color: #4CAF50;
+}
+
+.phone-input-group {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+}
+
+#telephone {
+    padding: 12px;
+    width: 60%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+#telephone:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+#tel_Button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+#tel_Button:hover {
+    background-color: #3e8e41;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Стили для секции услуг */
+.services {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+}
+
+.services__title {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 2em;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease;
+}
+
+.services__content {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease;
+}
+
+.services__content > p {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.services-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px dashed #ddd;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    background-color: #f0f0f0;
+    transform: translateX(5px);
+}
+
+.service-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.service-price {
+    background-color: #4CAF50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover .service-price {
+    background-color: #3e8e41;
+    transform: scale(1.05);
+}
+
+/* Врачи */
+.docktors {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.docktors__title {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 2em;
+    margin: 40px 0 20px;
+    animation: fadeIn 1s ease;
+}
+
+.docktor__card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.docktor__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.docktor__card h3 {
+    color: #4CAF50;
+    margin-top: 0;
+}
+
+/* Подвал */
+.footer {
+    background-color: #E9ECEF;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer__menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+footer img {
+    height: 50px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+footer img:hover {
+    transform: scale(1.1);
+}
+
+.nav_link {
+    color: black;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.nav_link:hover {
+    color: #4CAF50;
+}
+
+/* Форма */
+form {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease;
+}
+
+form h1 {
+    text-align: center;
+    color: #4CAF50;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background-color: #3e8e41;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Медиазапросы для адаптива (768px) */
+@media (max-width: 768px) {
+    .header_inner {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .header__menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .nav__link, .nav__link1 {
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+    }
+    
+    #nav__Button {
+        width: 100%;
+    }
+    
+    .clinic__content {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    
+    .clinic-text, .clinic__content > img {
+        width: 100%;
+        order: initial;
+    }
+    
+    .clinik__title {
+        padding-left: 0;
+        font-size: 2em;
+    }
+    
+    .phone-input-group {
+        flex-direction: column;
+    }
+    
+    #telephone {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    #tel_Button {
+        width: 100%;
+    }
+    
+    .services-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .docktor__card {
+        margin: 10px 0;
+    }
+    
+    .footer__menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    form {
+        margin: 20px;
+        padding: 20px;
+    }
+}
