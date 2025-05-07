@@ -1,69 +1,190 @@
+/**
+ * ГЛАВНЫЙ СКРИПТ ВЕТЕРИНАРНОЙ КЛИНИКИ "ПУШИСТЫЕ ДРУЗЬЯ"
+ * 
+ * Алгоритм работы модального окна записи:
+ * 1. Пользователь нажимает кнопку "Запись на прием"
+ * 2. Система открывает модальное окно с формой
+ * 3. Пользователь заполняет данные
+ * 4. При отправке:
+ *    - Если данные не заполнены → показать ошибку
+ *    - Если данные валидны → "отправить" данные
+ *    - Показать сообщение об успехе
+ *    - Закрыть модальное окно
+ * 
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Скрипт подключен и работает!');
     
-    // 1. Обработка кнопки в шапке
-    const appointmentBtn = document.getElementById('nav__Button');
-    if (appointmentBtn) {
-        appointmentBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('Клик по кнопке записи на прием');
-            // Здесь будет открытие модального окна
+    // ========== 1. Инициализация переменных ==========
+    const DOM = {
+        appointmentBtn: document.getElementById('nav__Button'),
+        callbackBtn: document.getElementById('tel_Button'),
+        phoneInput: document.getElementById('telephone'),
+        header: document.querySelector('.header'),
+        doctorCards: document.querySelectorAll('.docktor__card'),
+        appointmentForm: document.querySelector('form'),
+        nameInput: document.getElementById('title'),
+        phoneFormInput: document.getElementById('num_tel')
+    };
+    
+    // Создаем элементы для модального окна
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    document.body.appendChild(modalOverlay);
+    
+    
+    // ========== 2. Функции ==========
+    
+    /**
+     * Открывает модальное окно записи
+     * @param {string} doctorName - Имя врача для записи (опционально)
+     */
+    function openAppointmentModal(doctorName = '') {
+        if (doctorName) {
+            DOM.nameInput.value = `Запись к ${doctorName}`;
+        }
+        DOM.appointmentForm.style.display = 'block';
+        modalOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        console.log('Открыто модальное окно записи');
+    }
+    
+    /** Закрывает модальное окно */
+    function closeModal() {
+        DOM.appointmentForm.style.display = 'none';
+        modalOverlay.style.display = 'none';
+        document.body.style.overflow = '';
+        console.log('Модальное окно закрыто');
+    }
+    
+    /** Валидация телефонного номера */
+    function validatePhone(phone) {
+        const regex = /^[\d\+][\d\(\)\ -]{4,14}\d$/;
+        return regex.test(phone);
+    }
+    
+    /** Плавный скролл к верху страницы */
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     }
     
-    // 2. Обработка формы обратного звонка
-    const callbackBtn = document.getElementById('tel_Button');
-    if (callbackBtn) {
-        callbackBtn.addEventListener('click', function(e) {
+    // ========== 3. Обработчики событий ==========
+    
+    // 3.1. Кнопка записи в шапке
+    if (DOM.appointmentBtn) {
+        DOM.appointmentBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            const phoneInput = document.getElementById('telephone');
-            if (phoneInput && phoneInput.value) {
-                console.log('Запрос обратного звонка на номер:', phoneInput.value);
-                // Здесь будет отправка данных на сервер
-                alert('Спасибо! Мы вам перезвоним в ближайшее время.');
-                phoneInput.value = '';
+            openAppointmentModal();
+        });
+    }
+    
+    // 3.2. Форма обратного звонка
+    if (DOM.callbackBtn) {
+        DOM.callbackBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (DOM.phoneInput && DOM.phoneInput.value) {
+                if (validatePhone(DOM.phoneInput.value)) {
+                    console.log('Запрос обратного звонка на номер:', DOM.phoneInput.value);
+                    alert('Спасибо! Мы вам перезвоним в ближайшее время.');
+                    DOM.phoneInput.value = '';
+                } else {
+                    alert('Пожалуйста, введите корректный номер телефона');
+                }
             } else {
                 alert('Пожалуйста, введите ваш телефон');
             }
         });
     }
     
-    // 3. Фиксированная шапка при скролле
+    // 3.3. Фиксированная шапка при скролле
     window.addEventListener('scroll', function() {
-        const header = document.querySelector('.header');
         if (window.scrollY > 50) {
-            header.classList.add('scrolled');
+            DOM.header.classList.add('scrolled');
         } else {
-            header.classList.remove('scrolled');
+            DOM.header.classList.remove('scrolled');
         }
+        
+        // Показываем/скрываем кнопку "вверх"
+        toggleScrollTopButton();
     });
     
-    // 4. Обработка карточек врачей
-    const doctorCards = document.querySelectorAll('.docktor__card');
-    doctorCards.forEach(card => {
+    // 3.4. Карточки врачей
+    DOM.doctorCards.forEach(card => {
         card.addEventListener('click', function() {
-            console.log('Выбрана карточка врача:', this.querySelector('h3').textContent);
-            // Здесь будет логика открытия подробной информации
+            const doctorName = this.querySelector('h3').textContent;
+            console.log('Выбрана карточка врача:', doctorName);
+            openAppointmentModal(doctorName);
         });
     });
     
-    // 5. Валидация формы записи
-    const appointmentForm = document.querySelector('form');
-    if (appointmentForm) {
-        appointmentForm.addEventListener('submit', function(e) {
+    // 3.5. Форма записи
+    if (DOM.appointmentForm) {
+        DOM.appointmentForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('title').value;
-            const phone = document.getElementById('num_tel').value;
             
-            if (name && phone) {
-                console.log('Форма записи:', {name, phone});
-                // Здесь будет отправка данных на сервер
-                alert('Запись оформлена! Мы свяжемся с вами для подтверждения.');
+            let isValid = true;
+            
+            // Валидация имени
+            if (!DOM.nameInput.value.trim()) {
+                DOM.nameInput.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                DOM.nameInput.style.borderColor = '#ddd';
+            }
+            
+            // Валидация телефона
+            if (!validatePhone(DOM.phoneFormInput.value)) {
+                DOM.phoneFormInput.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                DOM.phoneFormInput.style.borderColor = '#ddd';
+            }
+            
+            if (isValid) {
+                console.log('Данные для отправки:', {
+                    name: DOM.nameInput.value,
+                    phone: DOM.phoneFormInput.value,
+                    doctors: doctorsTitles
+                });
+                
+                alert(`Спасибо, ${DOM.nameInput.value.split(' ')[0]}! Запись оформлена.`);
+                closeModal();
                 this.reset();
             } else {
-                alert('Пожалуйста, заполните все поля');
+                alert('Пожалуйста, заполните все поля корректно!');
             }
         });
+    }
+    
+    // 3.6. Закрытие модального окна
+    modalOverlay.addEventListener('click', closeModal);
+    
+    // 3.7. Кнопка скролла вверх
+    const scrollTopBtn = createScrollTopButton();
+    scrollTopBtn.addEventListener('click', scrollToTop);
+    
+    // ========== 4. Вспомогательные функции ==========
+    
+    /** Создает кнопку для скролла вверх */
+    function createScrollTopButton() {
+        const btn = document.createElement('button');
+        btn.innerHTML = '↑';
+        btn.className = 'scroll-to-top';
+        btn.style.display = 'none';
+        document.body.appendChild(btn);
+        return btn;
+    }
+    
+    /** Показывает/скрывает кнопку скролла */
+    function toggleScrollTopButton() {
+        const btn = document.querySelector('.scroll-to-top');
+        if (btn) {
+            btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+        }
     }
     
     console.log('Инициализация завершена');
