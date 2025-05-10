@@ -11,6 +11,7 @@
  *    - Показать сообщение об успехе
  *    - Закрыть модальное окно
  * 
+ * Блок-схема: https://example.com/flowchart-vetclinic.png
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -187,5 +188,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    console.log('Инициализация завершена');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Находим все заголовки на странице
+        const headings = document.querySelectorAll('h1, h2, h3');
+        
+        // Создаем массив с текстом заголовков
+        const headingsArray = Array.from(headings).map(heading => heading.textContent.trim());
+        
+        // Выводим массив в консоль
+        console.log('Массив заголовков:', headingsArray);
+    });
+
 });
