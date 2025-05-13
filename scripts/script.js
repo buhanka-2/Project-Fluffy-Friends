@@ -199,4 +199,87 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Массив заголовков:', headingsArray);
     });
 
+
+    // ========== 5. Динамическое создание блока врачей ==========
+    
+    // Объект с данными врачей
+    const doctorsData = {
+        title: "Наши квалифицированные врачи",
+        description: "3 ветеринарных специалиста",
+        callToAction: "Вызвать врача",
+        doctors: [
+            {
+                name: "Иванова Анна Петровна",
+                position: "Главный ветеринарный врач",
+                photo: "images/doctor1.jpg"
+            },
+            {
+                name: "Смирнов Дмитрий Игоревич",
+                position: "Ветеринарный врач-кардиолог",
+                photo: "images/doctor2.jpg"
+            },
+            {
+                name: "Кузнецова Елена Владимировна",
+                position: "Ветеринарный врач-дерматолог",
+                photo: "images/doctor3.jpg"
+            }
+        ]
+    };
+
+    // Функция для создания блока врачей
+    function createDoctorsSection(data) {
+        const doctorsSection = document.querySelector('.docktors');
+        
+        // Очищаем существующий контент
+        doctorsSection.innerHTML = '';
+        
+        // Создаем заголовок
+        const title = document.createElement('h1');
+        title.className = 'docktors__title';
+        title.textContent = data.title;
+        doctorsSection.appendChild(title);
+        
+        // Создаем описание
+        const description = document.createElement('p');
+        description.textContent = data.description;
+        doctorsSection.appendChild(description);
+        
+        // Добавляем горизонтальную линию
+        doctorsSection.appendChild(document.createElement('hr'));
+        
+        // Создаем призыв к действию
+        const cta = document.createElement('h2');
+        cta.textContent = data.callToAction;
+        doctorsSection.appendChild(cta);
+        
+        // Добавляем горизонтальную линию
+        doctorsSection.appendChild(document.createElement('hr'));
+        
+        // Создаем контейнер для карточек врачей
+        const doctorsContainer = document.createElement('div');
+        doctorsContainer.className = 'container'; // Используем существующий класс container
+        
+        // Создаем карточки для каждого врача
+        data.doctors.forEach(doctor => {
+            const doctorCard = document.createElement('div');
+            doctorCard.className = 'docktor__card';
+            
+            // Добавляем обработчик клика
+            doctorCard.addEventListener('click', () => openAppointmentModal(doctor.name));
+            
+            // Заполняем карточку данными в соответствии с существующей структурой
+            doctorCard.innerHTML = `
+                <h3>${doctor.name}</h3>
+                <p>${doctor.position}</p>
+                <img src="${doctor.photo}" alt="${doctor.name}" style="max-width: 200px; border-radius: 8px;">
+            `;
+            
+            doctorsContainer.appendChild(doctorCard);
+        });
+        
+        doctorsSection.appendChild(doctorsContainer);
+    }
+
+    // Вызываем функцию создания блока врачей
+    createDoctorsSection(doctorsData);
 });
