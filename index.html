@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пушистые Друзья</title>
     <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 <body>
     <header class = "header">
@@ -102,29 +103,21 @@
                 </ul>
             </div>
         </section>
-        <section class = "docktors">
-            <h1 class = "docktors__title">Наши квалифицированные врачи</h1>
-            
+        <section class="docktors">
+            <h1 class="docktors__title">Наши квалифицированные врачи</h1>
             <p>3 ветеринарных специалиста</p>
-            
             <hr>
-            
             <h2>Вызвать врача</h2>
-            
             <hr>
-            <div class="docktor__card">
-                <h3>ФИО врача 1</h3>
-                <p>Должность врача 1</p>
-                <p>Фотография врача 1</p>
-            </div>
-            <div class="docktor__card">
-                <h3>ФИО врача 2</h3>
-                <p>Должность врача 2</p>
-                <p>Фотография врача 2</p>
-            </div><div class="docktor__card">
-                <h3>ФИО врача 3</h3>
-                <p>Должность врача 3</p>
-                <p>Фотография врача 3</p>
+            
+            <!-- Карусель Swiper -->
+            <div class="swiper doctorsSwiper">
+                <div class="swiper-wrapper">
+                    <!-- Карточки будут добавлены динамически -->
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </section>
     </main>
@@ -150,5 +143,9 @@
         <button type="submit">Отправить</button>
     </form>
     <script src="scripts/script.js"></script>
+    <div class="preloader">
+        <div class="preloader__spinner"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>

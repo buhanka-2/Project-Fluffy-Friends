@@ -15,8 +15,175 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Скрипт подключен и работает!');
+    // Инициализация прелоадера
+    const preloader = document.querySelector('.preloader');
     
+    // Загрузка данных
+    setTimeout(() => {
+        loadDoctorsData();
+        initForms();
+    }, 1500);
+
+    // Инициализация форм с LocalStorage
+    function initForms() {
+        // Форма обратного звонка
+        const callbackForm = {
+            phoneInput: document.getElementById('telephone'),
+            button: document.getElementById('tel_Button')
+        };
+
+        // Форма записи на прием
+        const appointmentForm = document.querySelector('form');
+        
+        // Восстановление данных из LocalStorage
+        if (localStorage.getItem('callbackPhone')) {
+            callbackForm.phoneInput.value = localStorage.getItem('callbackPhone');
+        }
+
+        // Обработчик формы обратного звонка
+        if (callbackForm.button) {
+            callbackForm.button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const phone = callbackForm.phoneInput.value.trim();
+                
+                if (phone) {
+                    if (validatePhone(phone)) {
+                        // Сохраняем в LocalStorage
+                        localStorage.setItem('callbackPhone', phone);
+                        
+                        console.log('Запрос обратного звонка на номер:', phone);
+                        alert('Спасибо! Мы вам перезвоним в ближайшее время.');
+                    } else {
+                        alert('Пожалуйста, введите корректный номер телефона');
+                    }
+                } else {
+                    alert('Пожалуйста, введите ваш телефон');
+                }
+            });
+        }
+
+        // Обработчик формы записи
+        if (appointmentForm) {
+            // Восстановление данных
+            if (localStorage.getItem('appointmentName')) {
+                document.getElementById('title').value = localStorage.getItem('appointmentName');
+            }
+            if (localStorage.getItem('appointmentPhone')) {
+                document.getElementById('num_tel').value = localStorage.getItem('appointmentPhone');
+            }
+
+            appointmentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('title').value.trim();
+                const phone = document.getElementById('num_tel').value.trim();
+                let isValid = true;
+                
+                // Валидация
+                if (!name) {
+                    document.getElementById('title').style.borderColor = 'red';
+                    isValid = false;
+                } else {
+                    document.getElementById('title').style.borderColor = '#ddd';
+                    localStorage.setItem('appointmentName', name);
+                }
+                
+                if (!validatePhone(phone)) {
+                    document.getElementById('num_tel').style.borderColor = 'red';
+                    isValid = false;
+                } else {
+                    document.getElementById('num_tel').style.borderColor = '#ddd';
+                    localStorage.setItem('appointmentPhone', phone);
+                }
+                
+                if (isValid) {
+                    // Сохраняем все данные
+                    const appointmentData = {
+                        name,
+                        phone,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    // Получаем существующие записи или создаем новый массив
+                    const appointments = JSON.parse(localStorage.getItem('appointments') || []);
+                    appointments.push(appointmentData);
+                    localStorage.setItem('appointments', JSON.stringify(appointments));
+                    
+                    alert(`Спасибо, ${name.split(' ')[0]}! Запись оформлена.`);
+                    closeModal();
+                } else {
+                    alert('Пожалуйста, заполните все поля корректно!');
+                }
+            });
+        }
+    }
+
+    // Функция загрузки данных о врачах с инициализацией Swiper
+    function loadDoctorsData() {
+        fetch('data/doctors.json')
+            .then(response => response.json())
+            .then(data => {
+                // Инициализация Swiper после загрузки данных
+                const swiper = new Swiper('.doctorsSwiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                        }
+                    }
+                });
+
+                // Добавление карточек врачей
+                const swiperWrapper = document.querySelector('.swiper-wrapper');
+                
+                data.doctors.forEach(doctor => {
+                    const slide = document.createElement('div');
+                    slide.className = 'swiper-slide';
+                    slide.innerHTML = `
+                        <h3>${doctor.name}</h3>
+                        <p>${doctor.position}</p>
+                        ${doctor.specialization ? `<p class="doctor-info">${doctor.specialization}</p>` : ''}
+                        ${doctor.experience ? `<p class="doctor-info">${doctor.experience}</p>` : ''}
+                        <img src="${doctor.photo}" alt="${doctor.name}" class="doctor-photo">
+                    `;
+                    
+                    // Обработчик клика для записи
+                    slide.addEventListener('click', () => {
+                        openAppointmentModal(doctor.name);
+                        // Автозаполнение имени врача в форме
+                        document.getElementById('title').value = `Запись к ${doctor.name}`;
+                    });
+                    
+                    swiperWrapper.appendChild(slide);
+                });
+
+                // Скрываем прелоадер
+                preloader.classList.add('hidden');
+                setTimeout(() => preloader.remove(), 500);
+            })
+            .catch(error => {
+                console.error('Error loading doctors data:', error);
+                preloader.classList.add('hidden');
+                document.querySelector('.docktors').innerHTML += `
+                    <div class="error-message">
+                        Не удалось загрузить данные о врачах. Пожалуйста, попробуйте позже.
+                    </div>
+                `;
+            });
+    }
+
     // ========== 1. Инициализация переменных ==========
     const DOM = {
         appointmentBtn: document.getElementById('nav__Button'),
