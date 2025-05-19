@@ -11,12 +11,10 @@
  *    - Показать сообщение об успехе
  *    - Закрыть модальное окно
  * 
- * Блок-схема: https://example.com/flowchart-vetclinic.png
+ * 
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация прелоадера
-    const preloader = document.querySelector('.preloader');
     
     // Загрузка данных
     setTimeout(() => {
@@ -120,10 +118,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Функция загрузки данных о врачах с инициализацией Swiper
     function loadDoctorsData() {
-        fetch('data/doctors.json')
+        fetch('data/data.json')
             .then(response => response.json())
             .then(data => {
                 // Инициализация Swiper после загрузки данных
+                // Инициализация Swiper
                 const swiper = new Swiper('.doctorsSwiper', {
                     slidesPerView: 1,
                     spaceBetween: 20,
@@ -148,39 +147,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Добавление карточек врачей
                 const swiperWrapper = document.querySelector('.swiper-wrapper');
                 
-                data.doctors.forEach(doctor => {
+                doctorsData.forEach(doctor => {
                     const slide = document.createElement('div');
                     slide.className = 'swiper-slide';
                     slide.innerHTML = `
                         <h3>${doctor.name}</h3>
                         <p>${doctor.position}</p>
-                        ${doctor.specialization ? `<p class="doctor-info">${doctor.specialization}</p>` : ''}
-                        ${doctor.experience ? `<p class="doctor-info">${doctor.experience}</p>` : ''}
                         <img src="${doctor.photo}" alt="${doctor.name}" class="doctor-photo">
                     `;
-                    
-                    // Обработчик клика для записи
-                    slide.addEventListener('click', () => {
-                        openAppointmentModal(doctor.name);
-                        // Автозаполнение имени врача в форме
-                        document.getElementById('title').value = `Запись к ${doctor.name}`;
-                    });
                     
                     swiperWrapper.appendChild(slide);
                 });
 
-                // Скрываем прелоадер
-                preloader.classList.add('hidden');
-                setTimeout(() => preloader.remove(), 500);
-            })
-            .catch(error => {
-                console.error('Error loading doctors data:', error);
-                preloader.classList.add('hidden');
-                document.querySelector('.docktors').innerHTML += `
-                    <div class="error-message">
-                        Не удалось загрузить данные о врачах. Пожалуйста, попробуйте позже.
-                    </div>
-                `;
+                // Обновляем Swiper после добавления слайдов
+                swiper.update();
             });
     }
 

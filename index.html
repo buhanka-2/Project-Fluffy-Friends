@@ -6,8 +6,10 @@
     <title>Пушистые Друзья</title>
     <link rel="stylesheet" href="css\style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-</head>
 <body>
+    <div class="preloader">
+        <div class="preloader__spinner"></div>
+    </div>
     <header class = "header">
         <div class = "container">
             <div class = "header_inner">
@@ -132,6 +134,7 @@
                 <a class = "nav_link" href="#">КОНТАКТЫ</a>
             </div>
         </div>
+        Толмачев Кирилл, Шерстнёв Дмитрий, Алика Новосёлова, Анастасия Забродина
     </footer>
     <!--форма находится здесь потому что в дальнейшем она будет модальным окном-->
     <form>
@@ -142,10 +145,26 @@
         <input type="number" id="num_tel" name="num_tel">
         <button type="submit">Отправить</button>
     </form>
-    <script src="scripts/script.js"></script>
-    <div class="preloader">
-        <div class="preloader__spinner"></div>
-    </div>
+    <script>
+        // Минимальное время показа - 3 секунды
+        document.addEventListener('DOMContentLoaded', function() {
+            const startTime = Date.now();
+            const minDisplayTime = 3000;
+            
+            window.addEventListener('load', function() {
+                const elapsed = Date.now() - startTime;
+                const remaining = Math.max(0, minDisplayTime - elapsed);
+                
+                setTimeout(function() {
+                    document.querySelector('.preloader').style.opacity = '0';
+                    setTimeout(() => {
+                        document.querySelector('.preloader').style.display = 'none';
+                    }, 500);
+                }, remaining);
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

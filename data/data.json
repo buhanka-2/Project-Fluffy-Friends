@@ -1,0 +1,25 @@
+{
+    "doctors": [
+      {
+        "name": "Иванова Анна Петровна",
+        "position": "Главный ветеринарный врач",
+        "specialization": "Хирургия, терапия",
+        "experience": "12 лет опыта",
+        "photo": "images/doctor1.jpg"
+      },
+      {
+        "name": "Смирнов Дмитрий Игоревич",
+        "position": "Ветеринарный врач-кардиолог",
+        "specialization": "Кардиология, УЗИ",
+        "experience": "8 лет опыта",
+        "photo": "images/doctor2.jpg"
+      },
+      {
+        "name": "Кузнецова Елена Владимировна",
+        "position": "Ветеринарный врач-дерматолог",
+        "specialization": "Дерматология, аллергология",
+        "experience": "6 лет опыта",
+        "photo": "images/doctor3.jpg"
+      }
+    ]
+  }
